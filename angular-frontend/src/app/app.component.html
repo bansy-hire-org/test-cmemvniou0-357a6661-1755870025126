@@ -1,0 +1,14 @@
+<h1>Order Management System</h1>
+
+<div *ngIf="orders.length > 0">
+  <h2>Orders:</h2>
+  <ul>
+    <li *ngFor="let order of orders">
+      Order ID: {{ order.id }}, Customer: {{ order.customerName }}, Amount: {{ order.totalAmount }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="orders.length == 0">
+  No Orders Found
+</div>
+
