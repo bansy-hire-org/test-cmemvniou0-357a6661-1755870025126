@@ -1,0 +1,40 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '40 14 * * 6'
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: java
+
+      # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+      # If this step fails, then you should remove it and run the build manually (see below)
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      # ℹ️ Command-line programs to run using the OS shell.
+      # ℹ️ Do any building here if it's necessary
+      # ℹ️ Examples:
+      #       run: |nmake cleannmaken./configurennmake nmake install
+
+      # 🧪 Upload the results as artifacts
+      #   find results in github.com/<repository>/actions
+      #   - name: Perform CodeQL Analysisn#     uses: github/codeql-action/analyze@v2n#     with:n#       category: "/codeql-analysis (upload)"
+
+      # ℹ️ Learn more at https://github.com/github/codeql-action/blob/main/docs/advanced-configuration.md#running-codeql-analysis-for-multiple-languages
